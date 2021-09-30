@@ -8,3 +8,11 @@ print(tabela_vendas)
 
 faturamento = tabela_vendas[['ID Loja', 'Valor Final']].groupby('ID Loja').sum()
 print(faturamento)
+
+quantidade = tabela_vendas[['ID Loja', 'Quantidade']].groupby('ID Loja').sum()
+print(quantidade)
+
+print('-' * 50)
+
+ticket_medio = (faturamento['Valor Final'] / quantidade['Quantidade']).to_frame()
+print(ticket_medio)
