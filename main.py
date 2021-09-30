@@ -1,16 +1,10 @@
-# This is a sample Python script.
+import pandas as pd
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+tabela_vendas = pd.read_excel('Vendas.xlsx')
 
+pd.set_option('display.max_columns', None)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+print(tabela_vendas)
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+faturamento = tabela_vendas[['ID Loja', 'Valor Final']].groupby('ID Loja').sum()
+print(faturamento)
